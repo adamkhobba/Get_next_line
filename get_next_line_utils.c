@@ -1,4 +1,3 @@
-
 #include "get_next_line.h"
 
 char *ft_strjoin(char const *s1, char const *s2) {
@@ -61,4 +60,13 @@ size_t ft_strlcpy(char *dst, const char *src, size_t size) {
   }
   dst[i] = '\0';
   return (l);
+}
+
+int main() {
+  char const s[] = "adam";
+  char const a[] = "khobba";
+
+  // char *d = ft_strjoin(a, s);
+  printf("%s", ft_strjoin(a, s));
+  return (0);
 }

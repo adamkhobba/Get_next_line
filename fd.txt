@@ -1,1 +1,3 @@
-adaf
+this is a test of get next line 
+get next line                  
+this function read and show to a singal line akk
