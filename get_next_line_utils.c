@@ -62,11 +62,11 @@ size_t ft_strlcpy(char *dst, const char *src, size_t size) {
   return (l);
 }
 
-int main() {
+/*int main() {
   char const s[] = "adam";
   char const a[] = "khobba";
 
-  // char *d = ft_strjoin(a, s);
-  printf("%s", ft_strjoin(a, s));
+   char *d = ft_strjoin(a, s);
+  printf("%s", d);
   return (0);
-}
+}*/
