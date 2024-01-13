@@ -1,6 +1,6 @@
 #ifndef GET_NEXT_LINE_H
 #define GET_NEXT_LINE_H
-#define BUFFER_SIZE 13
+#define BUFFER_SIZE 5
 
 #include <stdio.h>
 #include <stdlib.h>

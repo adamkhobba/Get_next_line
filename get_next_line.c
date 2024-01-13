@@ -3,45 +3,41 @@
 
 char *ft_read(char *arr, int fd) {
   int sbuff;
-  int nsbuff;
   char *str;
   int i;
 
   str = (char *)malloc(BUFFER_SIZE + 1);
-  sbuff = read(fd, str, BUFFER_SIZE);
-  str[BUFFER_SIZE + 1] = '\0';
-  if (sbuff < 0) {
-    free(str);
-    return ((void *)0);
-  }
-  if (!arr)
-  {
-    arr = ft_strdup(str);
-  }
+  // sbuff = read(fd, str, BUFFER_SIZE);
+  // str[sbuff] = '\0';
+  // if (sbuff < 0) {
+  //   free(str);
+  //   return ((void *)0);
+  // }
+
+  //puts(str);
   i = 0;
-  while (i < 3) {
-  //  if (str[i + BUFFER_SIZE] == '\n' && str[i + BUFFER_SIZE] == '\0')
-  	//   break;
-  //  else {
-     // free(str);
-     // str = (char *)malloc(BUFFER_SIZE + i + 1);
-      nsbuff = read(fd, str, BUFFER_SIZE);
-    //   if (nsbuff == 0)
-	  // {
-    //     break;
-	  // }
-      str[nsbuff] = '\0';
-	puts(str);
-      arr = ft_strjoin(arr, str);
+  while (1) {
+    sbuff = read(fd, str, BUFFER_SIZE);
+    str[sbuff] = '\0';
+    arr = ft_strjoin(arr, str);
+    puts(arr);
+    if (sbuff == 0)
+    {
+      printf("---------\n");
+      puts(arr);
+      break;
+    }
+	  //puts(str);
     i++;
   }
   return (arr);
 }
 
-char *get_next_line(int fd) {
-
+char *get_next_line(int fd) 
+{
   static char *arr;
-  char *real;
+  char        *real;
+
   arr = ft_read(arr, fd);
   return (arr);
 }
@@ -49,7 +45,8 @@ char *get_next_line(int fd) {
 int main()
 {
 	int fd = open("fd.txt", O_RDONLY);
-  printf("%s",get_next_line(fd));
+  get_next_line(fd);
+  // printf("%s",get_next_line(fd));
 	return 0;
 }
 /*int main() {
