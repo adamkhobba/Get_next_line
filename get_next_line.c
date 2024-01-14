@@ -1,69 +1,60 @@
 #include "get_next_line.h"
-#include <fcntl.h>
 
-char *ft_read(char *arr, int fd) {
-  int sbuff;
-  char *str;
-  int i;
+char *ft_read(char *arr, int fd)
+{
+char    *str;
+int     sub;
+int check ;
 
-  str = (char *)malloc(BUFFER_SIZE + 1);
-  // sbuff = read(fd, str, BUFFER_SIZE);
-  // str[sbuff] = '\0';
-  // if (sbuff < 0) {
-  //   free(str);
-  //   return ((void *)0);
-  // }
-
-  //puts(str);
-  i = 0;
-  while (1) {
-    sbuff = read(fd, str, BUFFER_SIZE);
-    str[sbuff] = '\0';
+check = 0;
+while (1)
+{
+    if (str)
+        free(str);
+    str = malloc(BUFFER_SIZE + 1);
+    sub = read(fd, str , BUFFER_SIZE);
+    str[sub] = '\0';
+    if (sub == 0)
+        break ;
     arr = ft_strjoin(arr, str);
-    puts(arr);
-    if (sbuff == 0)
+    int i = 0;
+    while(arr[i])
     {
-      printf("---------\n");
-      puts(arr);
-      break;
+        if (arr[i] == '\n')
+        {
+            check = 1;
+                break ;
+            }  
+            ++i;
+        }
+        if (1 == check)
+            break ;
+        //printf("-------------\n");
+         //puts(arr);
     }
-	  //puts(str);
-    i++;
-  }
-  return (arr);
+    return (arr);
 }
 
-char *get_next_line(int fd) 
+ft_MovethN(char *str, char *str2)
 {
-  static char *arr;
-  char        *real;
+    char     
 
-  arr = ft_read(arr, fd);
-  return (arr);
+
 }
-
-int main()
+char *get_next_line(int fd)
 {
-	int fd = open("fd.txt", O_RDONLY);
-  get_next_line(fd);
-  // printf("%s",get_next_line(fd));
-	return 0;
+static char *arr;
+char        *Iamtheone;
+
+    arr = ft_read(arr,fd);
+    Iamtheone = ft_MovetheN(arr, Iamtheone); 
+    return (arr);
 }
-/*int main() {
-	char *s;
-	char *arr;
-	arr = (char *)malloc(30);
-	s = (char *)malloc(30);
-	int fd = open("fd.txt", O_RDONLY);
-	int fb = read(fd, s, 12);
-	//  printf("s =%s$\n", s);
-	arr = ft_strdup(s);
-	// free(s);
-	// s = (char *)malloc(30);
-	fb = read(fd, s, 12);
-	printf("s =%s$\n", s);
-	printf("arr =%s\n", arr);
-	char *a = ft_strjoin(arr, s);
-	printf("total = %s$", a);
-	return (0);
-}*/
+
+int main ()
+{
+    int fd = open("fd.txt", O_RDWR);
+    //  get_next_line(fd);
+    printf("%s", get_next_line(fd));
+    return 0;
+}
