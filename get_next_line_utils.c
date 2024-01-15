@@ -62,6 +62,21 @@ size_t ft_strlcpy(char *dst, const char *src, size_t size) {
   return (l);
 }
 
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
+	return (NULL);
+}
 /*int main() {
   char const s[] = "adam";
   char const a[] = "khobba";

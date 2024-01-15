@@ -2,59 +2,78 @@
 
 char *ft_read(char *arr, int fd)
 {
-char    *str;
-int     sub;
-int check ;
+    char    *str;
+    char    *s;
+    int     sub;
+    int     check;
+    int     i;
 
-check = 0;
-while (1)
-{
-    if (str)
-        free(str);
-    str = malloc(BUFFER_SIZE + 1);
-    sub = read(fd, str , BUFFER_SIZE);
-    str[sub] = '\0';
-    if (sub == 0)
-        break ;
-    arr = ft_strjoin(arr, str);
-    int i = 0;
-    while(arr[i])
+    i = 0;
+    while (arr && arr[i])
     {
         if (arr[i] == '\n')
-        {
-            check = 1;
-                break ;
-            }  
-            ++i;
-        }
-        if (1 == check)
             break ;
-        //printf("-------------\n");
-         //puts(arr);
+        i++;
+    }
+    s = malloc(ft_strlen(arr) - i);
+    if (arr)
+        s = ft_strdup(arr + (ft_strlen(arr) - i));
+    if (arr)
+    {
+        free(arr);
+        arr = NULL;
+    }
+    while (1)
+    {
+        if (str)
+            free(str);
+        str = malloc(BUFFER_SIZE + 1);
+        sub = read(fd, str , BUFFER_SIZE);
+        str[sub] = '\0';
+        arr = ft_strjoin(arr, str);
+        if (sub == 0)
+            break ;
+        if (ft_strchr(arr, '\n'))
+                break ;
     }
     return (arr);
 }
 
-ft_MovethN(char *str, char *str2)
+char *ft_MovetheN(char *str)
 {
-    char     
+    int i;
+    char *str2;
 
+    i = 0;
 
+    str2 = malloc(ft_strlen(str));
+    while (str[i])
+    {   
+        if (str[i] == '\n')
+            break ;
+        str2[i] = str[i];
+        ++i;
+    }
+    // puts(str2);
+    return (str2);
 }
+
 char *get_next_line(int fd)
 {
-static char *arr;
-char        *Iamtheone;
+    static char *arr;
+    char        *one;
 
     arr = ft_read(arr,fd);
-    Iamtheone = ft_MovetheN(arr, Iamtheone); 
+    one = ft_MovetheN(arr);
     return (arr);
 }
 
 int main ()
 {
     int fd = open("fd.txt", O_RDWR);
-    //  get_next_line(fd);
-    printf("%s", get_next_line(fd));
+    get_next_line(fd);
+    // printf("%s", get_next_line(fd));
+    printf("\n$%s$", get_next_line(fd));
+    //printf("\n%s", get_next_line(fd));
     return 0;
 }
