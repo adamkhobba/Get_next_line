@@ -1,5 +1,5 @@
-    #ifndef GET_NEXT_LINE_H
-#define GET_NEXT_LINE_  H
+#ifndef GET_NEXT_LINE_H
+#define GET_NEXT_LINE_ H
 #define BUFFER_SIZE 10
 
 #include <stdio.h>

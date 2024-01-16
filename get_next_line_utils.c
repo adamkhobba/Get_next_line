@@ -86,11 +86,3 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)&s[i]);
 	return (NULL);
 }
-// int main() {
-//   char const s[] = "adam";
-//   char const a[] = "khobba";
-
-//    char *d = ft_strjoin(s, a);
-//   printf("%s", d);
-//   return (0);
-// }

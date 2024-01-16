@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-char *ft_read(char *arr, int fd)
+char    *ft_read(char *arr, int fd)
 {
     char    *str;
     char    *s;
@@ -14,10 +14,10 @@ char *ft_read(char *arr, int fd)
     while (1)
     {
         str = malloc(BUFFER_SIZE + 1);
-        sub = read(fd, str , BUFFER_SIZE);
+        sub = read(fd, str, BUFFER_SIZE);
         str[sub] = '\0';
         arr = ft_strjoin(arr, str);
-        if (sub == 0)
+        if (sub == 0) 
             break ;
         if (str)
             free(str);
@@ -27,11 +27,10 @@ char *ft_read(char *arr, int fd)
     return (arr);
 }
 
-
-char *ft_backup(char *arr)
+char    *ft_backup(char *arr)
 {
-    char *reserve;
-    int i;
+    char    *reserve;
+    int     i;
 
     i = 0;
     if (!arr)
@@ -43,11 +42,10 @@ char *ft_backup(char *arr)
         i++;
     }
     reserve = ft_strdup(arr +  i + 1);
-    // printf("$%d$", (strlen(arr) - i));
     return (reserve);
 }
 
-char *ft_line(char *arr)
+char    *ft_line(char *arr)
 {
     char    *str;
     int     i;
@@ -69,7 +67,7 @@ char *ft_line(char *arr)
     return (str);
 }
 
-char *get_next_line(int fd)
+char    *get_next_line(int fd)
 {
     static char *arr;
     char        *one;
@@ -77,18 +75,19 @@ char *get_next_line(int fd)
     arr = ft_read(arr, fd);
     one = ft_line(arr);
     if (*one == '\0')
-        return (NULL);   
+        return (NULL);
     return (one);
 }
 
 int main ()
 {
+    char *s;
     int fd = open("fd.txt", O_RDWR);
-    // get_next_line(fd);
-    //   get_next_line(fd);
-        // get_next_line(fd);
-          get_next_line(fd); 
-    printf("$%s$\n", get_next_line(fd));
-    // printf("%s\n", get_next_line(fd));
+    s = get_next_line(fd);
+    while (s != NULL)
+    {
+        printf("%s\n", s);
+        s = get_next_line(fd);
+    }
     return 0;
 } 
