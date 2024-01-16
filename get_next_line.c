@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:32:44 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/16 15:41:48 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/01/16 16:18:47 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ char    *ft_read(char *arr, int fd)
   
     if (arr)
     {
-        free(arr);
+        // free(arr);
         arr = ft_backup(arr);
     }
     while (1)
     {        
         str = malloc(BUFFER_SIZE + 1);
+    //    printf("location of str in ft_read is =%p\n",str);
         if (!str)
         {
             free(str);
@@ -34,7 +35,6 @@ char    *ft_read(char *arr, int fd)
         sub = read(fd, str, BUFFER_SIZE);
         str[sub] = '\0';
         arr = ft_strjoin(arr, str);
-        printf("location of str in ft_read is =%p\n",str);
         free(str);
         if (sub == 0)
             break ;
@@ -59,6 +59,8 @@ char    *ft_backup(char *arr)
         i++;
     }
     reserve = ft_strdup(arr + i + 1);
+    // printf("location =%p\n",reserve);
+    free(arr);
     return (reserve);
 }
 
@@ -69,8 +71,8 @@ char    *ft_line(char *arr)
 
     i = 0;
     str = malloc(ft_strlen(arr));
-    // if (ft_free(str))
-    //     return (NULL);
+    if (!str)
+        return (NULL);
     while (arr && arr[i])
     {
         str[i] = arr[i];
@@ -78,6 +80,7 @@ char    *ft_line(char *arr)
             break ;
         i++;
     }
+    free(str);
     return (str);
 }
 
@@ -88,8 +91,7 @@ char    *get_next_line(int fd)
 
     arr = ft_read(arr, fd);
     one = ft_line(arr);
-    // printf(" location of arr if get...is =%p\n",arr);
-    if (*one == '\0')
+    if (one && *one == '\0')
         return (NULL);
     return (one);
 }
