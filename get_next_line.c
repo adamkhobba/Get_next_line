@@ -53,24 +53,19 @@ char *ft_line(char *arr)
     int     i;
 
     i = 0;
-    if (arr)
+    str = malloc(ft_strlen(arr));
+    if (!str)
     {
-        
-        str = malloc(ft_strlen(arr));
-        if (!str)
-        {
-            free(str);
-            return (NULL);
-        }
-        while (arr && arr[i])
-        {
-            if (arr[i] == '\n')
-                break ;
-            str[i] = arr[i];
-            i++;
-        }
+        free(str);
+        return (NULL);
     }
-    // printf("%s\n", str);
+    while (arr && arr[i])
+    {
+        if (arr[i] == '\n')
+            break ;
+        str[i] = arr[i];
+        i++;
+    }
     return (str);
 }
 
@@ -80,15 +75,19 @@ char *get_next_line(int fd)
     char        *one;
 
     arr = ft_read(arr, fd);
-    one = ft_line(arr);   
+    one = ft_line(arr);
+    if (*one == '\0')
+        return (NULL);   
     return (one);
 }
 
 int main ()
 {
     int fd = open("fd.txt", O_RDWR);
-    get_next_line(fd);
     // get_next_line(fd);
+    //   get_next_line(fd);
+        // get_next_line(fd);
+          get_next_line(fd); 
     printf("$%s$\n", get_next_line(fd));
     // printf("%s\n", get_next_line(fd));
     return 0;
