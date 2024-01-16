@@ -1,24 +1,44 @@
 #include "get_next_line.h"
 
-char *ft_strjoin(char const *s1, char const *s2) {
-  size_t l1;
-  size_t l2;
-  char *p;
+static void    ft_strcpy(char *dest, const char *src)
+{
+    int    i;
 
-  if (!s1 && !s2)
-    return (NULL);
-  else if (!s1)
-    return (ft_strdup(s2));
-  else if (!s2)
-    return (ft_strdup(s1));
-  l1 = ft_strlen(s1);
-  l2 = ft_strlen(s2);
-  p = (char *)malloc(sizeof(char) * (l1 + l2 + 1));
-  if (!p)
-    return (NULL);
-  ft_strlcpy(p, s1, l1 + 1);
-  ft_strlcpy(p + l1, s2, l2 + 1);
-  return (p);
+    i = 0;
+    while (src[i] != '\0')
+    {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+}
+
+char    *ft_strjoin(char const *s1, char const *s2)
+{
+    size_t    i;
+    size_t    l1;
+    size_t    l2;
+    char    *p;
+
+    if (!s1 && !s2)
+        return (NULL);
+    else if (!s1)
+        return (ft_strdup(s2));
+    else if (!s2)
+        return (ft_strdup(s1));
+    l1 = ft_strlen(s1);
+    l2 = ft_strlen(s2);
+    p = (char *)malloc(sizeof(char) * (l1 + l2 + 1));
+    if (!p)
+        return (NULL);
+    ft_strcpy(p, s1);
+    i = 0;
+    while (s2[i])
+    {
+        p[l1++] = s2[i++];
+    }
+    p[l1] = '\0';
+    return (p);
 }
 
 char *ft_strdup(const char *s) {
@@ -39,27 +59,14 @@ char *ft_strdup(const char *s) {
   return (put);
 }
 
-int ft_strlen(const char *s) {
+size_t  ft_strlen(const char *s) {
   int i;
+  
+  if (!s)
+    return (0);
   while (s[i] != '\0')
     i++;
   return (i);
-}
-
-size_t ft_strlcpy(char *dst, const char *src, size_t size) {
-  size_t i;
-  size_t l;
-
-  i = 0;
-  l = ft_strlen(src);
-  if (size == 0)
-    return (l);
-  while (i < size - 1 && src[i]) {
-    dst[i] = src[i];
-    i++;
-  }
-  dst[i] = '\0';
-  return (l);
 }
 
 char	*ft_strchr(const char *s, int c)
@@ -67,6 +74,8 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
+  if (!s)
+    return (NULL);
 	while (s[i] != '\0')
 	{
 		if (s[i] == (char)c)
@@ -77,11 +86,11 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)&s[i]);
 	return (NULL);
 }
-/*int main() {
-  char const s[] = "adam";
-  char const a[] = "khobba";
+// int main() {
+//   char const s[] = "adam";
+//   char const a[] = "khobba";
 
-   char *d = ft_strjoin(a, s);
-  printf("%s", d);
-  return (0);
-}*/
+//    char *d = ft_strjoin(s, a);
+//   printf("%s", d);
+//   return (0);
+// }
