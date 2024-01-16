@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/16 11:33:02 by akhobba           #+#    #+#             */
+/*   Updated: 2024/01/16 15:22:10 by akhobba          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 static void    ft_strcpy(char *dest, const char *src)
@@ -13,7 +25,7 @@ static void    ft_strcpy(char *dest, const char *src)
     dest[i] = '\0';
 }
 
-char    *ft_strjoin(char const *s1, char const *s2)
+char    *ft_strjoin(char *s1, char *s2)
 {
     size_t    i;
     size_t    l1;
@@ -38,20 +50,23 @@ char    *ft_strjoin(char const *s1, char const *s2)
         p[l1++] = s2[i++];
     }
     p[l1] = '\0';
+    free(s1);
     return (p);
 }
 
-char *ft_strdup(const char *s) {
-  char *ptr;
-  char *put;
-  size_t i;
+char *ft_strdup(const char *s)
+{
+  char  *ptr;
+  char  *put;
+  size_t  i;
 
   i = 0;
   ptr = (char *)s;
   put = (char *)malloc(ft_strlen(s) + 1);
   if (put == NULL)
     return (0);
-  while (ptr[i]) {
+  while (ptr[i])
+  {
     put[i] = ptr[i];
     i++;
   }
@@ -59,7 +74,8 @@ char *ft_strdup(const char *s) {
   return (put);
 }
 
-size_t  ft_strlen(const char *s) {
+size_t  ft_strlen(const char *s) 
+{
   int i;
   
   if (!s)
@@ -71,7 +87,7 @@ size_t  ft_strlen(const char *s) {
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	int i;
 
 	i = 0;
   if (!s)
