@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:32:44 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/16 21:40:27 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/01/17 21:39:30 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char    *ft_line(char *arr)
         i++;
     }
     //  printf("location =%p\n",str);
-    free(str);
+    // free(str);
     return (str);
 }
 
@@ -111,7 +111,9 @@ char    *get_next_line(int fd)
 int main ()
 {
     char *s;
-    int fd = open("fdd.txt", O_RDWR);
+    int fd = open("fd.txt", O_RDWR);
+    // s = get_next_line(fd);
+    // s = get_next_line(fd);
     s = get_next_line(fd);
     while (s != NULL)
     {

@@ -1,5 +1,3 @@
 this is a test of get next line
 suu su kadam balgcbtoreazxr
 this function read and show to a singal line akk
-fsdf
- asdf
