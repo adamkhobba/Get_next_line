@@ -6,13 +6,16 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:32:21 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/16 13:31:02 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/01/16 18:56:45 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
-#define GET_NEXT_LINE_ H
+#define GET_NEXT_LINE_H
+
+#ifndef BUFFER_SIZE
 #define BUFFER_SIZE 10
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>

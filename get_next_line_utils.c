@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:33:02 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/16 15:22:10 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/01/16 18:59:02 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ size_t  ft_strlen(const char *s)
 {
   int i;
   
+  i = 0;
   if (!s)
     return (0);
   while (s[i] != '\0')
