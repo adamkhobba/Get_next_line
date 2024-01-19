@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:32:21 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/16 18:56:45 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/01/19 10:13:21 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char    *get_next_line(int fd);
 char    *ft_strjoin(char *s1, char *s2);
 char    *ft_strdup(const char *s);
 size_t  ft_strlen(const char *s);
-size_t  ft_strlcpy(char *dst, const char *src, size_t size);
+size_t  ft_strlcpy(char *dst, char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
 char *ft_backup(char *arr);
 

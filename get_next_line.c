@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:32:44 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/17 21:39:30 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/01/19 10:25:58 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,12 @@ char    *ft_read(char *arr, int fd)
   
     if (arr)
     {
-        // free(arr);
         arr = ft_backup(arr);
     }
     while (1)
     {        
-        //if(buffer_size    );
+
         str = malloc((size_t)BUFFER_SIZE + 1);
-    //    printf("location of str in ft_read is =%p\n",arr);
         if (!str)
         {
             free(str);
@@ -35,6 +33,7 @@ char    *ft_read(char *arr, int fd)
         sub = read(fd, str, BUFFER_SIZE);
         str[sub] = '\0';
         arr = ft_strjoin(arr, str);
+        puts(arr);
         free(str);
         if (sub == 0)
             break ;
@@ -60,14 +59,11 @@ int ft_count(char *arr)
 char    *ft_backup(char *arr)
 {
     char    *reserve;
-    int     i;
 
-    i = 0;
     if (!arr)
         return (NULL);
-    i = ft_count(arr);
-    reserve = ft_strdup(arr + i + 1);
-    // printf("location =%p\n",reserve);
+    reserve = ft_strdup(arr + ft_count(arr) + 1);
+
     free(arr);
     return (reserve);
 }
@@ -78,19 +74,18 @@ char    *ft_line(char *arr)
     int     i;
 
     i = 0;
-    // printf("%d", ft_count(arr));
-    str = malloc(ft_count(arr));
+    // puts(arr);
+    str = malloc(ft_count(arr) + 1);
     if (!str)
         return (NULL);
-    while (arr && arr[i])
+    while (arr && arr[i] && i < ft_count(arr) + 1)
     {
-        str[i] = arr[i];
-        if (arr[i] == '\n')
-            break ;
+      str[i] = arr[i];
         i++;
     }
-    //  printf("location =%p\n",str);
-    // free(str);
+    str[i] = '\0';
+    // printf("%s", arr);
+    free(str);
     return (str);
 }
 
@@ -98,11 +93,14 @@ char    *get_next_line(int fd)
 {
     static char *arr;
     char        *one;
+    
     if(BUFFER_SIZE < 0 || fd < 0)
         return 0;
+        
+        
     arr = ft_read(arr, fd);
     one = ft_line(arr);
-    // printf("location =%p\n",one);
+    
     if (one && *one == '\0')
         return (NULL);
     return (one);
@@ -112,14 +110,13 @@ int main ()
 {
     char *s;
     int fd = open("fd.txt", O_RDWR);
-    // s = get_next_line(fd);
-    // s = get_next_line(fd);
     s = get_next_line(fd);
-    while (s != NULL)
-    {
-        printf("%s", s);
-        s = get_next_line(fd);
-    }
+    // printf("%s", s);
+    s = get_next_line(fd);   
+    // printf("%s", s);
+    // s = get_next_line(fd);
+    // printf("%s", s);
     // system("leaks a.out");
     return 0;
 }
+    
