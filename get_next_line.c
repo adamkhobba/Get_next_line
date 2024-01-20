@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 20:28:38 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/20 10:41:09 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/01/20 15:58:11 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char    *ft_Myline(char *arr)
         i++;
     }
     str[i] = '\0';
+    // free(arr);
     return (str);
 }
 char    *get_next_line(int fd)
@@ -85,9 +86,10 @@ int main ()
     int fd = open("fd.txt", O_RDWR);
     // get_next_line(fd);
     get_next_line(fd);
-    printf("%s", get_next_line(fd));
     // printf("%s", get_next_line(fd));
     // printf("%s", get_next_line(fd));
+    // printf("%s", get_next_line(fd));
+    system("leaks a.out");
     close(fd);
     return 0;
 }
