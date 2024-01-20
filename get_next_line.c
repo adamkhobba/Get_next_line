@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 20:28:38 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/19 22:49:53 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/01/20 10:41:09 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char    *ft_read(char *arr, int fd)
         str[sub] = '\0';
         arr = ft_strjoin(arr, str);
         free(str);
-        // puts(arr);
+        puts(arr);
         if (sub == 0)
             break ;
         if (ft_strchr(arr, '\n'))
