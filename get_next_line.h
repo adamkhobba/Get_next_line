@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:32:21 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/19 10:13:21 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/01/19 21:49:27 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ char    *ft_strdup(const char *s);
 size_t  ft_strlen(const char *s);
 size_t  ft_strlcpy(char *dst, char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
-char *ft_backup(char *arr);
+char    *ft_backup(char *arr);
 
 #endif
