@@ -25,10 +25,10 @@
 
 char    *get_next_line(int fd);
 char    *ft_strjoin(char *s1, char *s2);
-char    *ft_strdup(const char *s);
+char    *ft_strdup(char *s);
 size_t  ft_strlen(const char *s);
 size_t  ft_strlcpy(char *dst, char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
 char    *ft_backup(char *arr);
-
+char   *ft_substr(char *s, size_t i, size_t len);
 #endif
