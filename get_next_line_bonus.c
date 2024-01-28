@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 18:39:22 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/25 11:04:43 by akhobba          ###   ########.fr       */
+/*   Created: 2024/01/26 12:03:48 by akhobba           #+#    #+#             */
+/*   Updated: 2024/01/27 13:50:32 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char    *ft_read(char *arr, int fd)
 {
     char    *str;
     int     sub; 
-  
+
     sub = 1;
+    // printf("dg\n");
     str = malloc(BUFFER_SIZE + 1);
     if (!str)
       return (NULL);
@@ -68,7 +69,6 @@ char *ft_line(char *arr)
     i++;
   }
   str[i] = '\0';
-      // printf("%p \n", str);
   return (str);
 }
 
@@ -90,15 +90,29 @@ char *ft_backup(char *arr)
 
 char  *get_next_line(int fd)
 {
-  static char *arr;
+  static char *arr[1024];
   char *one;
 
+  // arr = (char **)malloc(fd * 100 *sizeof(char *));
   if (BUFFER_SIZE <= 0 || fd < 0 || BUFFER_SIZE >= 2147483647 || fd > 1025)
 		return (NULL);
-  arr = ft_read(arr, fd);
-  one = ft_line(arr);
-  arr = ft_backup(arr);
+  arr[fd] = ft_read(arr[fd], fd);
+  one = ft_line(arr[fd]);
+  arr[fd] = ft_backup(arr[fd]);
   if (one && *one == '\0')
     return (NULL);
   return (one);
 }
+
+// int main()
+// {
+//   int fd = open("fd.txt", O_RDWR);
+//   printf("%i", fd);
+//   char *s = get_next_line(fd);
+//   printf("%s",s);
+//   int fd1 = open("fd1.txt", O_RDWR);
+//   printf("%i", fd1);
+//   s = get_next_line(fd1);
+//   printf("%s",s);
+//   return 0;
+// }

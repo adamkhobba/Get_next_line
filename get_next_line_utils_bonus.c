@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 11:33:02 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/19 10:15:43 by akhobba          ###   ########.fr       */
+/*   Created: 2024/01/26 14:44:57 by akhobba           #+#    #+#             */
+/*   Updated: 2024/01/26 14:44:58 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+
+#include "get_next_line_bonus.h"
 
 static void    ft_strcpy(char *dest, const char *src)
 {
