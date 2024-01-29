@@ -104,7 +104,7 @@ char	*get_next_line(int fd)
 	static char	*arr[1024];
 	char		*one;
 
-	if (BUFFER_SIZE <= 0 || fd < 0 || BUFFER_SIZE >= 2147483647 || fd > 1025)
+	if (BUFFER_SIZE <= 0 || fd < 0 || BUFFER_SIZE >= 2147483647)
 		return (NULL);
 	arr[fd] = ft_read(arr[fd], fd);
 	one = ft_line(arr[fd]);
@@ -113,16 +113,3 @@ char	*get_next_line(int fd)
 		return (NULL);
 	return (one);
 }
-
-// int main()
-// {
-//   int fd = open("fd.txt", O_RDWR);
-//   printf("%i", fd);
-//   char *s = get_next_line(fd);
-//   printf("%s",s);
-//   int fd1 = open("fd1.txt", O_RDWR);
-//   printf("%i", fd1);
-//   s = get_next_line(fd1);
-//   printf("%s",s);
-//   return 0;
-// }

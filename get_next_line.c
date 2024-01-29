@@ -113,25 +113,3 @@ char	*get_next_line(int fd)
 		return (NULL);
 	return (one);
 }
-int main()
-{
-	int fd = open("t", O_RDONLY);
-	// char *s = get_next_line(fd);
-	// while (s)
-	// {
-	char *s;
-		s = get_next_line(fd);
-		printf("%s", s);
-		free(s);
-		s = get_next_line(fd);
-		free(s);
-		s = get_next_line(fd);
-		free(s);
-		s = get_next_line(fd);
-		free(s);
-		s = get_next_line(fd);
-		free(s);
-	system("leaks a.out");
-	// }
-	return 0;
-}
