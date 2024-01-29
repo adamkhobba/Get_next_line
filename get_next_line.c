@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 18:39:22 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/28 18:45:48 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/01/29 15:00:38 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_read(char *arr, int fd)
 	int		sub;
 
 	sub = 1;
-	str = malloc(BUFFER_SIZE + 1);
+	str = malloc((size_t)BUFFER_SIZE + (size_t)1);
 	if (!str)
 		return (NULL);
 	while (sub && !ft_strchr(arr, '\n'))
@@ -104,7 +104,7 @@ char	*get_next_line(int fd)
 	static char	*arr;
 	char		*one;
 
-	if (BUFFER_SIZE <= 0 || fd < 0 || BUFFER_SIZE >= 2147483647 || fd > 1025)
+	if (BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647 || fd < 0)
 		return (NULL);
 	arr = ft_read(arr, fd);
 	one = ft_line(arr);
@@ -112,4 +112,26 @@ char	*get_next_line(int fd)
 	if (one && *one == '\0')
 		return (NULL);
 	return (one);
+}
+int main()
+{
+	int fd = open("t", O_RDONLY);
+	// char *s = get_next_line(fd);
+	// while (s)
+	// {
+	char *s;
+		s = get_next_line(fd);
+		printf("%s", s);
+		free(s);
+		s = get_next_line(fd);
+		free(s);
+		s = get_next_line(fd);
+		free(s);
+		s = get_next_line(fd);
+		free(s);
+		s = get_next_line(fd);
+		free(s);
+	system("leaks a.out");
+	// }
+	return 0;
 }
