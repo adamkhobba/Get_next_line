@@ -32,7 +32,7 @@ char	*ft_read(char *arr, int fd)
 	int		sub;
 
 	sub = 1;
-	str = malloc(BUFFER_SIZE + 1);
+	str = malloc(BUFFER_SIZE + (size_t)1);
 	if (!str)
 		return (NULL);
 	while (sub && !ft_strchr(arr, '\n'))

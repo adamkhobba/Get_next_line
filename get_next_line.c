@@ -6,7 +6,7 @@
 /*   By: akhobba <akhobba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 18:39:22 by akhobba           #+#    #+#             */
-/*   Updated: 2024/01/29 15:00:38 by akhobba          ###   ########.fr       */
+/*   Updated: 2024/01/30 18:15:16 by akhobba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_read(char *arr, int fd)
 	int		sub;
 
 	sub = 1;
-	str = malloc((size_t)BUFFER_SIZE + (size_t)1);
+	str = malloc((size_t)BUFFER_SIZE + 1);
 	if (!str)
 		return (NULL);
 	while (sub && !ft_strchr(arr, '\n'))
